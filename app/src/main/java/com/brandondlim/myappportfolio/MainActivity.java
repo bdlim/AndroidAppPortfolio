@@ -3,6 +3,7 @@ package com.brandondlim.myappportfolio;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,67 +15,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button popularMovies = (Button) findViewById(R.id.popular_movies);
-        Button stockHawk = (Button) findViewById(R.id.stock_hawk);
-        Button buildItBigger = (Button) findViewById(R.id.build_it_bigger);
-        Button makeYourAppMaterial = (Button) findViewById(R.id.make_your_app_material);
-        Button goUbiquitous = (Button) findViewById(R.id.go_ubiquitous);
-        Button capstone = (Button) findViewById(R.id.capstone);
-
-        popularMovies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Popular Movies Pressed";
-                buttonPressed(text);
-            }
-        });
-
-        stockHawk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Stock Hawk Pressed";
-                buttonPressed(text);
-            }
-        });
-
-        buildItBigger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Build It Bigger Pressed";
-                buttonPressed(text);
-            }
-        });
-
-        makeYourAppMaterial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Make Your App Material Pressed";
-                buttonPressed(text);
-            }
-        });
-
-        goUbiquitous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Go Ubiquitous Pressed";
-                buttonPressed(text);
-            }
-        });
-
-        capstone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Capstone Pressed";
-                buttonPressed(text);
-            }
-        });
-
-
-
     }
 
-    public void buttonPressed(CharSequence text) {
+    public void buttonPressed(View view) {
         int duration = Toast.LENGTH_SHORT;
+        CharSequence text;
+
+        switch(view.getId()) {
+            case R.id.popular_movies:
+                text = "Popular Movies Pressed";
+                break;
+            case R.id.stock_hawk:
+                text = "Stock Hawk Pressed";
+                break;
+            case R.id.build_it_bigger:
+                text = "Build It Bigger Pressed";
+                break;
+            case R.id.make_your_app_material:
+                text = "Make Your App Pressed";
+                break;
+            case R.id.go_ubiquitous:
+                text = "Go Ubiquitous Pressed";
+                break;
+            case R.id.capstone:
+                text = "Capstone Pressed";
+                break;
+            default:
+                text = "No Text Set";
+                break;
+        }
 
         Toast toast = Toast.makeText(this, text, duration);
         toast.show();
